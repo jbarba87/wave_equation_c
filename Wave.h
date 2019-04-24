@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#include <ncurses.h>
 
 class Wave{
 
@@ -24,7 +24,8 @@ class Wave{
     Vector *getTimeVector(int);
 
     void Wave_Solve();
-    void Wave_Plot();
+    void Wave_Plot(int);
+    void Wave_nPlot(int);
 };
 
 

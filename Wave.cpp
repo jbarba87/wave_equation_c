@@ -1,6 +1,9 @@
 
 #include "Vector.h"
 #include "Wave.h"
+
+#define DELAY 100000
+
 Wave::Wave(float _dt, float _dx, float _t_end, float _x_end, float _coef, float *_b, Vector (*_t0)(Vector)){
 
   int i;
@@ -48,7 +51,7 @@ Vector *Wave::getTimeVector(int pos){
 
 
 
-void Wave::Wave_Plot(){
+void Wave::Wave_Plot(int max_height){
 
   int i, j;
 
@@ -77,7 +80,7 @@ void Wave::Wave_Plot(){
 
 
     fflush(pipe);
-    usleep(100000);
+    usleep(DELAY);
 
   }
 
@@ -127,4 +130,54 @@ void Wave::Wave_Solve(){
   }
 
 }
+
+
+void Wave::Wave_nPlot(int max_height){
+
+  int row,col;
+  int i, j;
+
+  Vector *vec;
+
+  initscr();
+
+  getmaxyx(stdscr,row,col);
+  int space = (int) ( ((float) col)/( (float) vec->getNdata()) );
+
+
+  int alt;
+  int mx = row/2;
+  float factor = mx/max_height;
+
+
+  for (i=0; i<this->NTimeVectors; i+=20){
+
+    vec = this->getTimeVector(i);
+    clear();
+
+    // Title
+    mvprintw( 0, 0, "Time: %f", i*this->dt);
+
+
+    for (j = 0; j<vec->getNdata(); j++){
+
+      alt = mx - (int) factor*vec->getData(j);
+      mvprintw( alt, j*space, "x");
+      refresh();
+
+      
+    }
+    usleep(DELAY);
+  }
+
+
+
+  endwin();
+}
+
+
+
+
+
+
 

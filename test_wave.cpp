@@ -35,7 +35,10 @@ int main(){
 
   // Solving it and plotting
   a.Wave_Solve();
-  a.Wave_Plot();
+
+  // Ploting the results
+//  a.Wave_Plot();
+  a.Wave_nPlot(2);
 
   return 0;
 }

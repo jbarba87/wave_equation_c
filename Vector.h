@@ -17,6 +17,8 @@ class Vector{
     int getNdata();
     float getData(int);
     void setData(float, int);
+    int getbigger();
+    int getlower();
     void show();
     void plot();
 

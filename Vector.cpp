@@ -39,6 +39,48 @@ void Vector::setData(float x, int pos){
 }
 
 
+int Vector::getbigger(){
+
+  int ndata = this->Ndata;
+  int i;
+  float max = 0.0;
+  float aux = 0.0;
+
+  for (i=0; i<ndata; i++){
+    aux = this->getData(i);
+
+    if (aux > max){
+      max = aux; 
+      break;   
+    }
+  }
+  return i;
+}
+
+
+
+
+int Vector::getlower(){
+
+  int ndata = this->Ndata;
+  int i;
+  float min = 0.0;
+  float aux = 0.0;
+
+  for (i=0; i<ndata; i++){
+    aux = this->getData(i);
+
+    if (aux < min){
+      min = aux; 
+      break;   
+    }
+  }
+  return i;
+}
+
+
+
+
 // Method Show: Print the values of the vector
 void Vector::show(){
   int i, Ndata = this->Ndata;
