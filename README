@@ -1,0 +1,11 @@
+README
+
+Program that solves the 1D Wave equation using finite differences and plot the results with Gnuplot
+
+Compile with: 
+
+$ make
+
+and execute with:
+
+$ ./test_wave
